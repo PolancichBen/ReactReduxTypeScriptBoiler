@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 const LandingPage: FC = () => {
-  return <Container>Hello Beautiful</Container>;
+  return <Container>Hello World</Container>;
 };
 
 export default LandingPage;

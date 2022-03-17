@@ -1,3 +1,4 @@
+import React, { FC } from 'react';
 import { Route, Routes } from 'react-router';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
@@ -23,7 +24,7 @@ const Container = styled.div`
   min-height: 100%;
 `;
 
-const App: React.FC = () => {
+const App: FC = () => {
   const [triggerModal, Modal] = useModal();
   const dispatch = useAppDispatch();
 
@@ -31,7 +32,7 @@ const App: React.FC = () => {
 
   return (
     <Container>
-      <GlobalHeader />
+      <GlobalHeader signedIn={false} />
       <Modal contents={HelloModal} requireResponse />
       <Routes>
         {/* Public Routes */}
