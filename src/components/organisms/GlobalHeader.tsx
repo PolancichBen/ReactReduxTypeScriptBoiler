@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router';
 
 import { useAppDispatch } from '../../store';
-import { setIsSignUpAndInModalOpen } from '../../store/site';
 
 const Container = styled.div`
   display: flex;

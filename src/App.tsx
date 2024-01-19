@@ -10,7 +10,7 @@ import LandingPage from './pages/LandingPage';
 
 import GlobalHeader from './components/organisms/GlobalHeader';
 
-import HelloModal from './components/molecules/modals/HelloModal';
+import { ConfirmationModal } from './components/molecules/modals/ConfirmationModal';
 
 import { useModal } from './hooks/UseModal';
 
@@ -33,7 +33,7 @@ const App: FC = () => {
   return (
     <Container>
       <GlobalHeader signedIn={false} />
-      <Modal contents={HelloModal} requireResponse />
+      <Modal contents={<ConfirmationModal />} requireResponse />
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
