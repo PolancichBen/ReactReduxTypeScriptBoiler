@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import MuiModal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
-import { summonFlashMessage } from "../helpers/flashMessage";
+import React, { useState } from 'react';
+import MuiModal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import { summonFlashMessage } from '../helpers/flashMessage';
 
 const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  maxHeight: "80%",
-  overflowY: "scroll",
-  transform: "translate(-50%, -50%)",
-  width: "60%",
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  maxHeight: '80%',
+  overflowY: 'scroll',
+  transform: 'translate(-50%, -50%)',
+  width: '60%',
   minWidth: 275,
-  bgcolor: "background.paper",
+  bgcolor: 'background.paper',
   border: `2px solid black`,
-  borderRadius: "10px",
+  borderRadius: '10px',
   boxShadow: 24,
   p: 3,
 };
@@ -30,6 +30,19 @@ export const useModal = (): [
 
   const openModal = () => setIsOpen(true);
 
+  /**
+   * Implementation
+   * const [openSomeModal, SomeModalShell, forceCloseSomeModal] = useModal();
+   *
+   * <SomeModalShell contents={<SomeComponent />} />
+   * Optionally, you can pass requireResponse as true to force the user
+   * to interact with the modal before closing it.
+   *
+   * <SomeModalShell contents={<SomeComponent />} requireResponse />
+   *
+   * Invoked by openSomeModal();
+   */
+
   const Modal = ({
     contents,
     requireResponse = false,
@@ -39,10 +52,10 @@ export const useModal = (): [
   }): JSX.Element => {
     const closeModal = (
       e: Event,
-      reason: "backdropClick" | "escapeKeyDown"
+      reason: 'backdropClick' | 'escapeKeyDown'
     ) => {
-      if (reason && reason === "backdropClick" && requireResponse) {
-        summonFlashMessage("Modal Requires Response", "warning");
+      if (reason && reason === 'backdropClick' && requireResponse) {
+        summonFlashMessage('Modal Requires Response', 'warning');
         return;
       }
       setIsOpen(false);

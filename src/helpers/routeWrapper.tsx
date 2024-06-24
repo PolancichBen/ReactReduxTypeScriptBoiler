@@ -1,18 +1,30 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Route } from 'react-router';
+// import { useSelector } from 'react-redux';
+import { Navigate, Outlet } from 'react-router';
 
-const Container = styled.div``;
+// import { isAdminSelector } from '../store/site';
 
-const RouteComponent = (Component: any, path: string, ...rest: any[]) => {
-  return (
-    // <Route path={path}>
-    <React.Fragment>
-      <Container>
-        <Component {...rest} />
-      </Container>
-    </React.Fragment>
-  );
+import { summonFlashMessage } from './flashMessage';
+import { PATHS } from '../constants/paths';
+
+/**
+ * DOCS
+ * https://stackoverflow.com/questions/69864165/error-privateroute-is-not-a-route-component-all-component-children-of-rou
+ */
+
+export const InternalAdminRoute = (): React.ReactElement => {
+  // const isAdmin = useSelector(isAdminSelector);
+  // TODO
+  const isAdmin = true;
+
+  if (!isAdmin) {
+    // Flash error message
+    summonFlashMessage(
+      'You do not have permission to access this page',
+      'error'
+    );
+    return <Navigate to={PATHS.landing.path} />;
+  } else {
+    return <Outlet />;
+  }
 };
-
-export default RouteComponent;
